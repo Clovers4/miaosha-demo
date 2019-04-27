@@ -28,12 +28,18 @@ public class MiaoshaController {
      */
     @GetMapping("/user")
     public int getUserId() {
-        return ThreadLocalRandom.current().nextInt(10000);
+        return ThreadLocalRandom.current().nextInt(100);
     }
 
     @GetMapping("/item/{itemId}")
     public int getStock(@PathVariable Long itemId) {
         return orderService.getStock(itemId);
+    }
+
+    @GetMapping("/item/{itemId}/order")
+    public boolean order(@PathVariable Long itemId) {
+        Long userId = Long.valueOf(ThreadLocalRandom.current().nextInt(100));
+        return orderService.order(userId, itemId);
     }
 
     @GetMapping("/item/{itemId}/order/{userId}")
