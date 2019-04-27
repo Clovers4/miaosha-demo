@@ -1,12 +1,11 @@
 package online.templab.miaoshaweb.controller;
 
 import online.templab.miaoshabase.entity.ItemOrder;
-import online.templab.miaoshacore.mapper.ItemOrderMapper;
 import online.templab.miaoshacore.service.OrderService;
+import online.templab.miaoshaweb.service.CacheOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,6 +19,9 @@ public class MiaoshaController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private CacheOrderService cacheOrderService;
 
     /**
      * 获取一个随机用户id
@@ -37,14 +39,15 @@ public class MiaoshaController {
     }
 
     @GetMapping("/item/{itemId}/order")
-    public boolean order(@PathVariable Long itemId) {
+    public void order(@PathVariable Long itemId) {
         Long userId = Long.valueOf(ThreadLocalRandom.current().nextInt(100));
-        return orderService.order(userId, itemId);
+        cacheOrderService.order(itemId, userId);
     }
 
     @GetMapping("/item/{itemId}/order/{userId}")
-    public boolean order(@PathVariable Long userId, @PathVariable Long itemId) {
-        return orderService.order(userId, itemId);
+    public void order(@PathVariable Long itemId, @PathVariable Long userId) {
+        orderService.order(itemId, userId);
+        //  cacheOrderService.order(itemId, userId);
     }
 
     @GetMapping("/user/{userId}/result")
