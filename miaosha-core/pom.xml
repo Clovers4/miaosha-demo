@@ -14,22 +14,17 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!--   1. miaosha     -->
         <dependency>
             <groupId>online.templab</groupId>
             <artifactId>miaosha-base</artifactId>
         </dependency>
 
-        <!-- 1. database -->
+        <!-- 2. database -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <!-- Spring Boot Druid连接池 -->
@@ -50,25 +45,18 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- 2. MQ -->
-        <!-- rabbitmq -->
+        <!-- 3. MQ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
-        <!-- 3. Other -->
+        <!-- 4. Other -->
         <!--devtools-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <!-- test -->

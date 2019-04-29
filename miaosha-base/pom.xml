@@ -14,10 +14,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- 通用Mapper -->
+        <!-- persistence 注解 -->
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <!-- lombok -->

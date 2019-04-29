@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderRequestSender {
+public class RequestSender {
 
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-    public void send(Long itemId, Long userId) {
+    public void sendOrderRequest(Long itemId, Long userId) {
         amqpTemplate.convertAndSend("order-request", new OrderRequest().setUserid(userId).setItemId(itemId));
     }
 

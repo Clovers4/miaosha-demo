@@ -1,9 +1,6 @@
 package online.templab.miaoshaweb.service;
 
 import online.templab.miaoshabase.entity.ItemOrder;
-import online.templab.miaoshaweb.sender.OrderRequestSender;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public interface CacheOrderService {
      * @param itemId
      * @param userId
      */
-    void order(Long itemId,Long userId);
+    void order(Long itemId, Long userId);
 
     /**
      * 查看用户所有订单接口

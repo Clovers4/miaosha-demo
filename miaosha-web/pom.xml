@@ -13,23 +13,36 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- 1. Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- 2. Core -->
-        <dependency>
-            <groupId>online.templab</groupId>
-            <artifactId>miaosha-core</artifactId>
-        </dependency>
+        <!-- 1. miaosha -->
         <dependency>
             <groupId>online.templab</groupId>
             <artifactId>miaosha-base</artifactId>
         </dependency>
 
-        <!-- 3.Other -->
+        <!-- 2. Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- 3. Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <!-- 3. MQ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <!-- 4.Other -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

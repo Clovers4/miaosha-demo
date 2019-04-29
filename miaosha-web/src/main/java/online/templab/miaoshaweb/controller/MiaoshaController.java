@@ -1,7 +1,6 @@
 package online.templab.miaoshaweb.controller;
 
 import online.templab.miaoshabase.entity.ItemOrder;
-import online.templab.miaoshacore.service.OrderService;
 import online.templab.miaoshaweb.service.CacheOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @RestController
 public class MiaoshaController {
 
-    @Autowired
-    private OrderService orderService;
+//    @Autowired
+//    private OrderService orderService;
 
     @Autowired
     private CacheOrderService cacheOrderService;
@@ -35,24 +34,25 @@ public class MiaoshaController {
 
     @GetMapping("/item/{itemId}")
     public int getStock(@PathVariable Long itemId) {
-        return orderService.getStock(itemId);
+        return cacheOrderService.getStock(itemId);
     }
 
     @GetMapping("/item/{itemId}/order")
     public void order(@PathVariable Long itemId) {
         Long userId = Long.valueOf(ThreadLocalRandom.current().nextInt(100));
+//        orderService.order(itemId, userId);
         cacheOrderService.order(itemId, userId);
     }
 
     @GetMapping("/item/{itemId}/order/{userId}")
     public void order(@PathVariable Long itemId, @PathVariable Long userId) {
-        orderService.order(itemId, userId);
-        //  cacheOrderService.order(itemId, userId);
+//        orderService.order(itemId, userId);
+        cacheOrderService.order(itemId, userId);
     }
 
     @GetMapping("/user/{userId}/result")
     public List<ItemOrder> getOrderResult(Long userId) {
-        return orderService.listItemOrders(userId);
+        return cacheOrderService.listItemOrders(userId);
     }
 
 }
