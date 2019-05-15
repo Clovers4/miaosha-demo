@@ -1,4 +1,4 @@
-package online.templab.miaoshacore;
+package online.templab.miaoshabase;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-@tk.mybatis.spring.annotation.MapperScan(basePackages = "online.templab.miaoshacore.mapper")
+@tk.mybatis.spring.annotation.MapperScan(basePackages = "online.templab.miaoshabase.mapper")
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MiaoshaCoreApplicationTests {
+@ComponentScan("online.templab.miaoshabase")
+public class MiaoshaBaseApplicationTests {
 
     @Test
     public void testMain(){

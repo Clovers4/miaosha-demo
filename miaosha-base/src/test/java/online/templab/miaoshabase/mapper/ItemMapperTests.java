@@ -1,14 +1,14 @@
-package online.templab.miaoshacore.mapper;
+package online.templab.miaoshabase.mapper;
 
 import online.templab.miaoshabase.entity.Item;
-import online.templab.miaoshacore.MiaoshaCoreApplicationTests;
+import online.templab.miaoshabase.MiaoshaBaseApplicationTests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class ItemMapperTests extends MiaoshaCoreApplicationTests {
+public class ItemMapperTests extends MiaoshaBaseApplicationTests {
 
     @Autowired
     private ItemMapper itemMapper;
