@@ -7,6 +7,7 @@ import online.templab.miaoshacore.mapper.ItemMapper;
 import online.templab.miaoshacore.mapper.ItemOrderMapper;
 import online.templab.miaoshacore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -33,14 +34,15 @@ public class OrderServiceImpl implements OrderService {
         return item.getStock();
     }
 
+    @Async
     @Override
-    public boolean order(Long itemId,Long userId) {
+    public boolean order(Long itemId, Long userId) {
         // TODO:防止超卖
         boolean success = 1 == itemMapper.decreaseStock(itemId);
         if (!success) {
             return false;
         }
-        log.info("item:{} user:{} order success! Now:{}", itemId, userId, new Date());
+        log.info("Order success! Now:{}", new Date());
         return 1 == itemOrderMapper.insertSelective(
                 new ItemOrder().setItemId(itemId).setUserId(userId)
         );
