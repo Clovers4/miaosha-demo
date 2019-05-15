@@ -16,6 +16,6 @@ public class OrderRequestReceiver {
 
     @RabbitHandler
     public void process(OrderRequest orderRequest) {
-        orderService.order(orderRequest.getUserid(), orderRequest.getItemId());
+        orderService.order(orderRequest.getItemId(), orderRequest.getUserid());
     }
 }
