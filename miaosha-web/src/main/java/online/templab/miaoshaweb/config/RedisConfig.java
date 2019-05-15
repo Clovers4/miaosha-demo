@@ -47,7 +47,8 @@ public class RedisConfig {
         template.setValueSerializer(serializer);
         //使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
-        template.setHashKeySerializer(new StringRedisSerializer());
+       // template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashKeySerializer(serializer);
         template.setHashValueSerializer(serializer);
         template.afterPropertiesSet();
         return template;
