@@ -36,6 +36,11 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <!-- Spring Boot Druid连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>

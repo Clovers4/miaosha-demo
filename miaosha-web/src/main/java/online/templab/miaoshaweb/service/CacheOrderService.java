@@ -7,6 +7,11 @@ import java.util.List;
 public interface CacheOrderService {
 
     /**
+     * 清除redis缓存
+     */
+    void cleanStockCache(Long itemId);
+
+    /**
      * 查询库存接口
      *
      * @param itemId

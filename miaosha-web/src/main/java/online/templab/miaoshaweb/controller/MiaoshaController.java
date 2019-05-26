@@ -37,6 +37,11 @@ public class MiaoshaController {
         return cacheOrderService.getStock(itemId);
     }
 
+    @GetMapping("/item/{itemId}/clean")
+    public void cleanStockCache(@PathVariable Long itemId) {
+         cacheOrderService.cleanStockCache(itemId);
+    }
+
     @GetMapping("/item/{itemId}/order")
     public void order(@PathVariable Long itemId) {
         Long userId = Long.valueOf(ThreadLocalRandom.current().nextInt(100));

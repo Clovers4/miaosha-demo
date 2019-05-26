@@ -25,9 +25,21 @@ public class CacheOrderServiceImpl implements CacheOrderService {
     private final String STOCK = "stock:";
 
     @Override
+    public void cleanStockCache(Long itemId) {
+        redisTemplate.opsForHash().delete(STOCK, itemId);
+
+    }
+
+    @Override
     public int getStock(Long itemId) {
         if (redisTemplate.opsForHash().hasKey(STOCK, itemId)) {
-            return (int) redisTemplate.opsForHash().get(STOCK, itemId);
+            int stock = (int) redisTemplate.opsForHash().get(STOCK, itemId);
+            // TODO:此处暂时解决了下面的缓存bug，使系统不会返回负数
+            if (stock < 0) {
+                stock = 0;
+                redisTemplate.opsForHash().put(STOCK, itemId, 0);
+            }
+            return stock;
         } else {
             int stock = itemMapper.selectByPrimaryKey(itemId).getStock();
             redisTemplate.opsForHash().put(STOCK, itemId, stock);
@@ -37,7 +49,7 @@ public class CacheOrderServiceImpl implements CacheOrderService {
 
     @Override
     public void order(Long itemId, Long userId) {
-        // TODO:此处有bug,高并发会突破该屏障导致库存变负数，不过只影响缓存，不会对真正的数据库造成影响
+        // TODO:此处高并发会突破该屏障导致库存变负数，不过只影响缓存（并且通过了上面的getStock处理了负数）。不会对真正的数据库造成影响
         if (getStock(itemId) <= 0) {
             return;
         }
