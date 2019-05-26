@@ -52,12 +52,12 @@
         </javaModelGenerator>
 
         <!-- 生成sql xml文件 -->
-        <sqlMapGenerator targetPackage="online.templab.miaoshacore.mapper" targetProject="${resources}">
+        <sqlMapGenerator targetPackage="online.templab.miaoshabase.mapper" targetProject="${resources}">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- 生成mapxml对应client，也就是接口dao -->
-        <javaClientGenerator targetPackage="online.templab.miaoshacore.mapper" targetProject="${project}"
+        <javaClientGenerator targetPackage="online.templab.miaoshabase.mapper" targetProject="${project}"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>

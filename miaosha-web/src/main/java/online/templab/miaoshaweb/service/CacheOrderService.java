@@ -1,10 +1,15 @@
-package online.templab.miaoshacore.service;
+package online.templab.miaoshaweb.service;
 
 import online.templab.miaoshabase.entity.ItemOrder;
 
 import java.util.List;
 
-public interface OrderService {
+public interface CacheOrderService {
+
+    /**
+     * 清除redis缓存
+     */
+    void cleanStockCache(Long itemId);
 
     /**
      * 查询库存接口
@@ -20,7 +25,7 @@ public interface OrderService {
      * @param itemId
      * @param userId
      */
-    boolean order(Long itemId,Long userId);
+    void order(Long itemId, Long userId);
 
     /**
      * 查看用户所有订单接口
@@ -29,6 +34,5 @@ public interface OrderService {
      * @return
      */
     List<ItemOrder> listItemOrders(Long userId);
-
 
 }

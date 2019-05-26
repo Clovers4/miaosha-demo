@@ -1,4 +1,4 @@
-package online.templab.miaoshacore.mapper;
+package online.templab.miaoshabase.mapper;
 
 import online.templab.miaoshabase.entity.Item;
 import org.springframework.stereotype.Component;
